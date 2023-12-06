@@ -36,11 +36,9 @@ export async function getVenue(id) {
 
   if (request.ok) {
     const json = await request.json();
-    console.log(json);
     return json;
   } else {
     const error = await request.json();
-    console.error(error);
     return null;
   }
 }

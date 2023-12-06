@@ -5,6 +5,8 @@ import SignUpPage from "./components/Pages/SignUpPage";
 import HomePage from "./components/Home/Homepage";
 import VenuesPage from "./components/Pages/VenuesPage";
 import SpecificPostPage from "./components/Pages/PostPage";
+import ProfilePage from "./components/Pages/Profile";
+import VenueBookingsPage from "./components/Pages/VenuesBookings";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route path="/signup" element={<SignUpPage />}></Route>
         <Route path="/venues" element={<VenuesPage />}></Route>
         <Route path="/postpage" element={<SpecificPostPage />}></Route>
+        <Route path="/profile" element={<ProfilePage />}></Route>
+        <Route path="/bookedvenues" element={<VenueBookingsPage />}></Route>
       </Routes>
     </Router>
   );

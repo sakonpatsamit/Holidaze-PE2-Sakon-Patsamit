@@ -6,6 +6,9 @@ export default {
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
       },
+      animation: {
+        "spin-slow": "spin 3s linear infinite", // Assuming you want to add this
+      },
     },
   },
   plugins: [],

@@ -34,3 +34,31 @@ export async function createBooking({ dateFrom, dateTo, guests, venueId }) {
     return { success: false, reason: error };
   }
 }
+
+export async function getBookings() {
+  const user = getUser();
+  if (!user) return { success: false, reason: "Unauthorized" };
+
+  console.log(user);
+
+  const endpoint = `${BASE_URL}/profiles/${user.name}/bookings`;
+
+  const headers = new Headers();
+  headers.append("Content-Type", "application/json");
+  headers.append("Authorization", `Bearer ${user.token}`);
+
+  const request = await fetch(endpoint, {
+    method: "GET",
+    headers: headers,
+  });
+
+  if (request.ok) {
+    const json = await request.json();
+    console.log(json);
+    return { success: true, booking: json };
+  } else {
+    const error = await request.json();
+    console.error(error);
+    return { success: false, reason: error };
+  }
+}

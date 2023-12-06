@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import NavigationButtons from "./NavigationButtons";
 
-const Navigation = ({ onSearch }) => {
+const Navigation = ({ onSearch, showSearch = false }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage mobile menu toggle
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -13,56 +13,60 @@ const Navigation = ({ onSearch }) => {
   };
 
   return (
-    <nav className="bg-pink-200 p-4 flex justify-between items-center">
-      <Link
-        to="/"
-        className="text-3xl font-bold text-gray-900 py-2 px-4"
-        style={{ fontFamily: "'Dancing Script', san serif" }}
-      >
-        Holidaze
-      </Link>
-
-      {/* Mobile Menu Toggle */}
-      <button
-        className="text-gray-900 inline-flex items-center justify-center p-2 rounded-md md:hidden"
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-      >
-        <svg
-          className="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+    <nav className="bg-pink-200 p-4 flex flex-col md:flex-row justify-between items-center">
+      <div className="flex justify-between items-center w-full md:w-auto">
+        <Link
+          to="/"
+          className="text-3xl font-bold text-gray-900 py-2 px-4"
+          style={{ fontFamily: "'Roboto', san serif" }}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-        </svg>
-      </button>
+          Holidaze
+        </Link>
+
+        {/* Mobile Menu Toggle */}
+        <button
+          className="text-gray-900 inline-flex items-center justify-center p-2 rounded-md md:hidden"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <svg
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
 
       {/* Menu Items */}
       <div
-        className={`flex-col md:flex-row flex items-center space-x-4 md:flex ${
+        className={`${
           isMenuOpen ? "flex" : "hidden"
-        }`}
+        } md:flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 w-full md:w-auto mt-4 md:mt-0`}
       >
-        <form onSubmit={handleSearch} className="flex">
-          <input
-            type="text"
-            placeholder="Search Venues"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="p-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-green-200"
-          />
-          <button
-            type="submit"
-            className="bg-gray-900 text-white hover:bg-pink-700 p-2 rounded-r-lg"
-          >
-            Search
-          </button>
-        </form>
+        {showSearch && (
+          <form onSubmit={handleSearch} className="flex w-full md:w-auto">
+            <input
+              type="text"
+              placeholder="Search Venues"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="p-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-green-200 flex-grow"
+            />
+            <button
+              type="submit"
+              className="bg-gray-900 text-white hover:bg-pink-700 p-2 rounded-r-lg"
+            >
+              Search
+            </button>
+          </form>
+        )}
         <NavigationButtons />
       </div>
     </nav>
