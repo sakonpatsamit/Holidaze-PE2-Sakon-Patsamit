@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { registerUser } from "../../services/auth";
 import LoadingSpinner from "../Shared/Loading";
 import Modal from "../Shared/Modal";
+import { useNavigate } from "react-router-dom";
 
 const SignUpPage = () => {
   const [username, setUsername] = useState("");
@@ -14,6 +15,7 @@ const SignUpPage = () => {
   const [modalMessage, setModalMessage] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const navigation = useNavigate();
 
   const handleRegistration = async (e) => {
     e.preventDefault();
@@ -48,7 +50,7 @@ const SignUpPage = () => {
       setIsModalOpen(true);
       setTimeout(() => {
         setIsModalOpen(false);
-        window.location.href = "/login";
+        navigation("/login");
       }, 3000);
     } catch (error) {
       console.error("Registration failed:", error);
