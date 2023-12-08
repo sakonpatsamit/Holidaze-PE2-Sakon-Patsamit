@@ -76,12 +76,18 @@ const MyVenues = () => {
           {myVenues.map((venue, index) => (
             <div
               key={index}
-              className="border border-gray-300 rounded-lg shadow-lg p-4 m-4"
+              className="border border-gray-300  rounded-lg shadow-lg p-4 m-4"
             >
-              {venue.media.length > 0 && (
+              {venue.media.length > 0 ? (
                 <img
                   src={venue.media[0]}
                   alt={venue.name}
+                  className="w-full h-64 object-cover rounded-lg shadow-sm mb-4"
+                />
+              ) : (
+                <img
+                  src="../public/placeholder-house.png"
+                  alt="Placeholder"
                   className="w-full h-64 object-cover rounded-lg shadow-sm mb-4"
                 />
               )}

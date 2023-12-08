@@ -4,25 +4,18 @@ const VenueCard = ({ id, title, description, image, location, meta }) => {
   return (
     <>
       <Link to={"/postpage?id=" + id}>
-        <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white hover:scale-105 ring-2 ring-transparent transition-all hover:ring-2 hover:ring-pink-200">
+        <div className="  max-w-sm h-96 rounded overflow-hidden shadow-lg bg-white hover:scale-105 ring-2 ring-transparent transition-all hover:ring-2 hover:ring-pink-200">
           <div
-            className="bg-gray-300 h-40"
+            className="bg-gray-300 h-40 "
             style={{
+              backgroundImage:
+                image && image.length > 0
+                  ? `url(${image})`
+                  : `url('/placeholder-house.png')`,
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
-              background: "url(/placeholder-house.png)",
             }}
-          >
-            {image && image.length > 0 ? (
-              <img
-                src={image}
-                alt={title}
-                className="h-40 w-full object-cover"
-              />
-            ) : (
-              ""
-            )}
-          </div>
+          ></div>
           <div className="px-6 py-4">
             <div className="flex flex-row items-center justify-end gap-3 float-right">
               {meta.wifi && (
