@@ -16,7 +16,7 @@ const LoginPage = () => {
     event.preventDefault();
 
     login(username, password).then((res) => {
-      console.log(res);
+      // TODO: Error message on failed login
       if (res) {
         navigate("/");
       }

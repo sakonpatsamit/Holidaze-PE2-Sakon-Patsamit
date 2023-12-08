@@ -11,7 +11,6 @@ const MyBookings = () => {
   useEffect(() => {
     getBookings()
       .then((res) => {
-        console.log(res);
         setBookings(res.booking);
       })
       .catch((error) => {

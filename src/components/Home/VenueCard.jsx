@@ -10,7 +10,7 @@ const VenueCard = ({ id, title, description, image, location, meta }) => {
             style={{
               backgroundImage:
                 image && image.length > 0
-                  ? `url(${image})`
+                  ? `url(${image[0]})`
                   : `url('/placeholder-house.png')`,
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",

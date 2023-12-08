@@ -48,7 +48,7 @@ export async function registerUser(
 
   if (request.ok) {
     const json = await request.json();
-    console.log(json);
+
     return json;
   } else {
     console.error(request.status, request.statusText);

@@ -62,8 +62,6 @@ const SignUpPage = () => {
         isVenueManager
       );
 
-      console.log(res);
-
       if (res && !res.errorCode) {
         setModalMessage("Success! Please wait...");
         setIsModalOpen(true);

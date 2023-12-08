@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import Navigation from "../Shared/Navigation";
 import Footer from "../Shared/Footer";
 
-import MyVenues from "../Profile/MyVenues";
-import MyBookings from "../Profile/MyBookings";
-import EditAvatar from "../Profile/EditAvatar";
+import MyVenues from "./MyVenues";
+import MyBookings from "./MyBookings";
+import EditAvatar from "./EditAvatar";
 import { isVenueManager } from "../../services/auth";
 import { useEffect } from "react";
 

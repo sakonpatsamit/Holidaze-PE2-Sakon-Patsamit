@@ -13,7 +13,6 @@ const EditAvatar = () => {
   useEffect(() => {
     getMyProfile()
       .then((res) => {
-        console.log(res);
         setUserProfile(res);
       })
       .catch((error) => {
@@ -29,7 +28,6 @@ const EditAvatar = () => {
     if (newAvatarUrl) {
       editAvatar(newAvatarUrl)
         .then((res) => {
-          console.log(res);
           setNewAvatarUrl("");
           setRefresh(!refresh);
         })

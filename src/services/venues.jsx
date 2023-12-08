@@ -15,7 +15,7 @@ export async function getVenues() {
 
   if (request.ok) {
     const json = await request.json();
-    console.log(json);
+
     return json;
   } else {
     const error = await request.json();
@@ -25,7 +25,6 @@ export async function getVenues() {
 }
 
 export async function getVenue(id) {
-  console.log(id);
   const endpoint = `${BASE_URL}/venues/${id}?_bookings=true`;
 
   const headers = new Headers();
@@ -170,7 +169,6 @@ export async function deleteVenue(venueId) {
     method: "DELETE",
     headers: headers,
   });
-  console.log(venueId);
 
   if (request.ok) {
     window.location.reload();

@@ -40,8 +40,6 @@ const SpecificPostPage = ({}) => {
     const _venueId = queryParams.get("id");
     document.title = "Holidaze - Spesific Post";
 
-    console.log(_venueId);
-
     if (_venueId) {
       setVenueId(_venueId);
       getVenue(_venueId)
@@ -114,7 +112,6 @@ const SpecificPostPage = ({}) => {
     };
 
     createBooking(booking).then((res) => {
-      console.log(res);
       if (confirmationDialog.current) {
         confirmationDialog.current.showModal();
         setTimeout(() => {

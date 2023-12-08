@@ -3,9 +3,9 @@ import { deleteVenue } from "../../services/venues";
 import { getMyVenues } from "../../services/profile";
 import LoadingSpinner from "../Shared/Loading";
 import Alert from "../Shared/Alert";
-import ConfirmModal from "../Shared/ConfirmModal";
+import ConfirmModal from "./ConfirmModal";
 import EditVenueModal from "./EditVenueModal";
-import BookingsModal from "../Shared/BookingModal";
+import BookingsModal from "./BookingModal";
 
 const MyVenues = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -38,7 +38,6 @@ const MyVenues = () => {
   useEffect(() => {
     getMyVenues()
       .then((res) => {
-        console.log(res);
         setMyVenues(res || []);
         setIsConfirmModalOpen(res.map(() => false));
       })
@@ -119,7 +118,6 @@ const MyVenues = () => {
                 onClose={() => updateShowModal(index)}
                 onConfirm={() => {
                   deleteVenue(venue.id);
-                  console.log("Item deleted");
                   setIsConfirmModalOpen(false);
                 }}
               />

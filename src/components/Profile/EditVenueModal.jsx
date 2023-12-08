@@ -18,7 +18,6 @@ const EditVenueModal = ({ isOpen, onClose, venueData = null }) => {
 
   useEffect(() => {
     if (venueData) {
-      console.log(venueData);
       setVenueName(venueData.name);
       setVenueDescription(venueData.description);
       setVenueCity(venueData.location.city);
@@ -91,7 +90,6 @@ const EditVenueModal = ({ isOpen, onClose, venueData = null }) => {
 
     submitAction(...submitArgs)
       .then((res) => {
-        console.log(res);
         onClose();
         if (typeof onSubmitSuccess === "function") {
           onSubmitSuccess();

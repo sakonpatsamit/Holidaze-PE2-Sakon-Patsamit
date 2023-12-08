@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navigation from "../Shared/Navigation";
 import Footer from "../Shared/Footer";
-import VenueCard from "../Shared/VenueCard";
+import VenueCard from "./VenueCard";
 import { getVenues } from "../../services/venues";
 import Balcony from "../../assets/balcony.jpg";
-import Hero from "../Shared/Hero";
+import Hero from "./Hero";
 import LoadingSpinner from "../Shared/Loading";
 
 const HomePage = () => {

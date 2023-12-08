@@ -8,7 +8,7 @@ const Navigation = ({ onSearch, showSearch = false }) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log("Search term:", searchTerm);
+
     onSearch(searchTerm);
   };
 

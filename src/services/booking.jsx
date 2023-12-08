@@ -26,7 +26,7 @@ export async function createBooking({ dateFrom, dateTo, guests, venueId }) {
 
   if (request.ok) {
     const json = await request.json();
-    console.log(json);
+
     return { success: true, booking: json };
   } else {
     const error = await request.json();
@@ -38,8 +38,6 @@ export async function createBooking({ dateFrom, dateTo, guests, venueId }) {
 export async function getBookings() {
   const user = getUser();
   if (!user) return { success: false, reason: "Unauthorized" };
-
-  console.log(user);
 
   const endpoint = `${BASE_URL}/profiles/${user.name}/bookings`;
 
@@ -54,7 +52,7 @@ export async function getBookings() {
 
   if (request.ok) {
     const json = await request.json();
-    console.log(json);
+
     return { success: true, booking: json };
   } else {
     const error = await request.json();
