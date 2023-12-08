@@ -31,7 +31,7 @@ https://holidaze-pink.netlify.app
 ### Framework
 
 ![React](https://img.icons8.com/color/48/000000/react-native.png) React
-![Tailwind CSS](./images/tailwind-css.png) Tailwind CSS
+![Tailwind CSS](https://img.icons8.com/color/48/000000/tailwind-css.png) Tailwind CSS
 
 ### Tools
 
