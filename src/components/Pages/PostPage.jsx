@@ -8,8 +8,9 @@ import { createBooking } from "../../services/booking";
 import LoadingSpinner from "../Shared/Loading";
 import Alert from "../Shared/Alert";
 import ImageModal from "../Shared/ModalImage";
+import { isLoggedIn } from "../../services/auth";
 
-const SpecificPostPage = () => {
+const SpecificPostPage = ({}) => {
   const confirmationDialog = useRef(null);
 
   const [venueId, setVenueId] = useState(null);
@@ -18,11 +19,17 @@ const SpecificPostPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [signedIn, setSignedIn] = useState(false);
 
   const [todayDate, setTodayDate] = useState(new Date());
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [maxDate, setMaxDate] = useState(new Date());
+
+  useEffect(() => {
+    const isSignedIn = isLoggedIn();
+    setSignedIn(isSignedIn);
+  }, []);
 
   const handleImageClick = () => {
     setIsModalOpen(true);
@@ -250,14 +257,16 @@ const SpecificPostPage = () => {
                   />
                 </div>
               </div>
-
-              <button
-                onClick={handleBooking}
-                className="w-80 bg-gray-900 text-white py-3 px-6 rounded-md hover:bg-pink-700 transition duration-300 mt-4"
-              >
-                Book Now
-              </button>
-
+              {signedIn ? (
+                <button
+                  onClick={handleBooking}
+                  className="w-80 bg-gray-900 text-white py-3 px-6 rounded-md hover:bg-pink-700 transition duration-300 mt-4"
+                >
+                  Book Now
+                </button>
+              ) : (
+                <p>Please log in to book this venue.</p>
+              )}
               <dialog
                 ref={confirmationDialog}
                 className="p-8 w-96 max-w-full rounded shadow-2xl"

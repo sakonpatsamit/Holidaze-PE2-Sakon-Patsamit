@@ -23,7 +23,6 @@ const Navigation = ({ onSearch, showSearch = false }) => {
           Holidaze
         </Link>
 
-        {/* Mobile Menu Toggle */}
         <button
           className="text-gray-900 inline-flex items-center justify-center p-2 rounded-md md:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -44,7 +43,6 @@ const Navigation = ({ onSearch, showSearch = false }) => {
         </button>
       </div>
 
-      {/* Menu Items */}
       <div
         className={`${
           isMenuOpen ? "flex" : "hidden"
