@@ -1,7 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { login } from "../../services/auth";
 import { useState } from "react";
+import { useEffect } from "react";
+
 const LoginPage = () => {
+  useEffect(() => {
+    document.title = "Holidaze - Login";
+  }, []);
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("");

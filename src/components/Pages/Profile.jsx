@@ -6,8 +6,12 @@ import MyVenues from "../Profile/MyVenues";
 import MyBookings from "../Profile/MyBookings";
 import EditAvatar from "../Profile/EditAvatar";
 import { isVenueManager } from "../../services/auth";
+import { useEffect } from "react";
 
 const ProfilePage = () => {
+  useEffect(() => {
+    document.title = "Holidaze - Profile";
+  });
   return (
     <div className="flex flex-col min-h-screen justify-between">
       <Navigation />

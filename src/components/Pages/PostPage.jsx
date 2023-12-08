@@ -31,6 +31,7 @@ const SpecificPostPage = () => {
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const _venueId = queryParams.get("id");
+    document.title = "Holidaze - Spesific Post";
 
     console.log(_venueId);
 

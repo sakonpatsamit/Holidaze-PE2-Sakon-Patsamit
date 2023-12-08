@@ -14,6 +14,7 @@ const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    document.title = "Holidaze - Homepage";
     async function _getVenues() {
       try {
         let _venues = await getVenues();

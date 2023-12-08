@@ -3,8 +3,12 @@ import { login, registerUser } from "../../services/auth";
 import LoadingSpinner from "../Shared/Loading";
 import Modal from "../Shared/Modal";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const SignUpPage = () => {
+  useEffect(() => {
+    document.title = "Holidaze - Sign Up";
+  });
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
