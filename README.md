@@ -31,7 +31,7 @@ https://holidaze-pink.netlify.app
 ### Framework
 
 ![React](https://img.icons8.com/color/48/000000/react-native.png) React
-![Tailwind CSS](https://cdn.icon-icons.com/icons2/2699/PNG/512/tailwindcss_logo_icon_170649.png) Tailwind CSS
+Tailwind CSS
 
 ### Tools
 
@@ -44,7 +44,7 @@ https://holidaze-pink.netlify.app
 1. Clone the project
 
 ```shell
-   git clone https://github.com/sakonpatsamit/Holidaze-PE2-Sakon-Patsamit
+   git clone https://github.com/sakonpatsamit/Holidaze-PE2-Sakon-Patsamit.git
 ```
 
 2.Install Project dependencies
