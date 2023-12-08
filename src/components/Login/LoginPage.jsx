@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { login } from "../../services/auth";
 import { useState } from "react";
 import { useEffect } from "react";
+import Modal from "../Shared/Modal";
 
 const LoginPage = () => {
   useEffect(() => {
@@ -11,16 +12,26 @@ const LoginPage = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleLogin = (event) => {
     event.preventDefault();
 
-    login(username, password).then((res) => {
-      // TODO: Error message on failed login
-      if (res) {
-        navigate("/");
-      }
-    });
+    login(username, password)
+      .then((res) => {
+        if (res) {
+          navigate("/");
+        } else {
+          setErrorMessage("invalid username or password");
+          setIsModalOpen(true);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        setErrorMessage("An error occurred during login");
+        setIsModalOpen(true);
+      });
   };
 
   const handleSignUpClick = () => {
@@ -90,6 +101,9 @@ const LoginPage = () => {
           </div>
         </form>
       </div>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <p>{errorMessage}</p>
+      </Modal>
     </div>
   );
 };

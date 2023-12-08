@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Navigation from "../Shared/Navigation";
 import Footer from "../Shared/Footer";
 import VenueCard from "./VenueCard";
