@@ -1,3 +1,3 @@
 # Holidaze
 
-![Holidaze](pubic/HolidazeExam.png)
+![Holidaze](public/HolidazeExam.png)
