@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { registerUser } from "../../services/auth";
+import { login, registerUser } from "../../services/auth";
 import LoadingSpinner from "../Shared/Loading";
 import Modal from "../Shared/Modal";
 import { useNavigate } from "react-router-dom";
@@ -18,25 +18,37 @@ const SignUpPage = () => {
   const navigation = useNavigate();
 
   const handleRegistration = async (e) => {
+    setUsernameError(null);
+    setPasswordError(null);
+
     e.preventDefault();
 
-    if (/\s/.test(username)) {
-      setUsernameError("Username cannot contain spaces");
-      return;
+    const pattern = /^[a-z0-9_]+$/;
+    let error = false;
+
+    if (!pattern.test(username)) {
+      setUsernameError("Username can only contain a-z, 0-9 and _");
+      error = true;
     }
 
-    if (password.length < 6) {
+    if (password.length < 8) {
       setPasswordError("Password must be at least 6 characters long");
-      return;
+      error = true;
     }
 
-    if (!(email.endsWith("@noroff.no") || email.endsWith("@noroff.stud.no"))) {
+    if (
+      email.startsWith("@") ||
+      !(email.endsWith("@noroff.no") || email.endsWith("@stud.noroff.no"))
+    ) {
       setIsModalOpen(true);
       setModalMessage("Please use a @noroff.no or @noroff.stud.no email");
-      return;
+      error = true;
     }
 
+    if (error) return;
+
     setIsLoading(true);
+
     try {
       const res = await registerUser(
         username,
@@ -45,13 +57,23 @@ const SignUpPage = () => {
         imageUrl,
         isVenueManager
       );
+
       console.log(res);
-      setModalMessage("Success! Please log in.");
-      setIsModalOpen(true);
-      setTimeout(() => {
-        setIsModalOpen(false);
-        navigation("/login");
-      }, 3000);
+
+      if (res && !res.errorCode) {
+        setModalMessage("Success! Please wait...");
+        setIsModalOpen(true);
+
+        login(email, password).then(() => {
+          setTimeout(() => {
+            setIsModalOpen(false);
+            navigation("/");
+          }, 3000);
+        });
+      } else {
+        setModalMessage("Something went wrong. Please try again.");
+        setIsModalOpen(true);
+      }
     } catch (error) {
       console.error("Registration failed:", error);
       setModalMessage("Registration failed. Please try again.");
@@ -59,6 +81,10 @@ const SignUpPage = () => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleVenueManagerChange = (e) => {
+    setIsVenueManager(e.target.checked);
   };
 
   if (isLoading) {
@@ -157,7 +183,7 @@ const SignUpPage = () => {
                     id="isVenueManager"
                     type="checkbox"
                     checked={isVenueManager}
-                    onChange={(e) => setIsVenueManager(e.target.value)}
+                    onChange={handleVenueManagerChange}
                   />
                   Sign up as a Venue Manager
                 </label>

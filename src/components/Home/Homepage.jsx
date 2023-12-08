@@ -18,7 +18,7 @@ const HomePage = () => {
       try {
         let _venues = await getVenues();
         setVenues(_venues);
-        setFilteredVenues(_venues.slice(0, 12));
+        setFilteredVenues(_venues);
       } catch (error) {
         console.error("Error fetching venues:", error);
       } finally {
@@ -46,7 +46,7 @@ const HomePage = () => {
           <div className="container mx-auto p-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {filteredVenues.map(
-                ({ id, name, description, media, location }) => {
+                ({ id, name, description, media, location, meta }) => {
                   return (
                     <VenueCard
                       key={id}
@@ -55,6 +55,7 @@ const HomePage = () => {
                       location={location}
                       description={description}
                       image={media}
+                      meta={meta}
                     />
                   );
                 }

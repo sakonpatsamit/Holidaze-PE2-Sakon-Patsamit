@@ -1,5 +1,5 @@
 const Alert = ({ title, text, type = "info" }) => {
-  let background = "bg-blue-300";
+  let background = "bg-pink-200";
 
   if (type == "error") background = "bg-red-300";
   else if (type == "success") background = "bg-green-300";
